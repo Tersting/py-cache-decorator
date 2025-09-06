@@ -5,7 +5,7 @@ def cache(func: Callable) -> Callable:
     memory_dict = {}
 
     def inner(*args, **kwargs) -> Any:
-        key = (*args, tuple(sorted(kwargs.items())))
+        key = ("args", args, "kwargs", tuple(sorted(kwargs.items())))
 
         if key in memory_dict:
             print("Getting from cache")
